@@ -236,23 +236,23 @@ def leaderboardPage():
                   <td>76%</td>
                   <td><a class="btn btn-success" href="?challenge=258"><span class="glyphicon glyphicon-knight"></span></a></td>
                 </tr>
-                <tr style="background-color:#2c75ff;">
+                <tr>
                   <td>246</td>
                   <td class="chargeScore">0.5<span style="color:green;" class="glyphicon glyphicon-menu-up"></span></td>
                   <td>8</td>
                   <td>-7.5</td>
                   <td><img style="width:30px;" src="/tc-img/cloudy.png"></td>
                   <td>55%</td>
-                  <td><a class="btn btn-success" disabled='disabled' href="?challenge=247"><span class="glyphicon glyphicon-knight"></span></a></td>
+                  <td><a class="btn btn-success" href="?challenge=246"><span class="glyphicon glyphicon-knight"></span></a></td>
                 </tr>
-                <tr>
+                <tr style="background-color:#2c75ff;">
                   <td>247</td>
                   <td class="chargeScore">0.4</td>
                   <td>18.2</td>
                   <td>-17.8</td>
                   <td><img style="width:30px;" src="/tc-img/cloudy.png"></td>
                   <td>86%</td>
-                  <td><a class="btn btn-success" href="?challenge=247"><span class="glyphicon glyphicon-knight"></span></a></td>
+                  <td><a class="btn btn-success" disabled='disabled' href="?challenge=247"><span class="glyphicon glyphicon-knight"></span></a></td>
                 </tr>
                 <tr>
                   <td>248</td>
@@ -417,6 +417,37 @@ def challengePage():
         </div>
 
     </div>
+    </body>
+    </html>
+    '''
+def profilePage():
+    print '''<body>
+    <div class="container">
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="?home=true">Take Charge</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="?home=true">Home</a></li>
+            <li><a href="#">Settings</a></li>
+            <li><a href="?profile=true">Profile</a></li>
+            <li><a href="?about=true">Help</a></li>
+          </ul>
+          <form class="navbar-form navbar-right">
+            <input type="text" class="form-control" placeholder="Search...">
+          </form>
+        </div>
+      </div>
+    </nav>
+    <h2><img class="center-block" src="/tc-img/ProfilePage.jpg" style="width:60%"></h2>
     </body>
     </html>
     '''
