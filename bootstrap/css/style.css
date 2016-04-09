@@ -1,0 +1,35 @@
+.sidemain > .nav-pills > li.active > a:hover,
+.sidemain > .nav-pills > li.active > a:focus,
+.sidemain > .nav-pills > li > a:hover,
+.sidemain > .nav-pills > li > a:focus {
+  color: #fff;
+  background-color: #2C75FF;
+}
+
+.sidemain > .nav-pills > li > a {
+  color: #fff;
+  background-color: #337ab7;
+}
+
+.circle-green
+{
+width:60px;
+height:60px;
+border-radius:50%;
+font-size:20px;
+color:#fff;
+line-height:60px;
+text-align:center;
+background:#10E082;
+}
+.circle-red
+{
+width:60px;
+height:60px;
+border-radius:50%;
+font-size:20px;
+color:#fff;
+line-height:60px;
+text-align:center;
+background:#FF2631;
+}
