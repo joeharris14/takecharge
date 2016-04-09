@@ -23,11 +23,15 @@ print """
         <!-- Bootstrap core CSS -->
         <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 """
-if ("home" in parameters):
+if ("home" in parameters.keys()):
     print """
         <!-- Custom styles for this template -->
         <link href="/bootstrap/css/jumbotron-narrow.css" rel="stylesheet">
-        <link href="/bootstrap/css/style.css" rel="stylesheet">
+
+    """
+elif ("leaderboard" in parameters.keys()):
+    print """
+    <link href="/bootstrap/css/dashboard.css" rel="stylesheet">
     """
 else:
     print """
@@ -35,6 +39,7 @@ else:
         <link href="/bootstrap/css/signin.css" rel="stylesheet">
     """
 print """
+        <link href="/bootstrap/css/style.css" rel="stylesheet">
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
         <!--[if lt IE 9]>
           <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
@@ -43,11 +48,11 @@ print """
       </head>
 
       <body>
-      <div class="container">
+
         """
 
 def homePage():
-    rating = -4
+    rating = 0.5
     if (rating < -50):
         color = "red"
     elif (rating > -50 and rating < -15):
@@ -57,28 +62,24 @@ def homePage():
     else:
         color = "green"
     print """
-      <div class="header clearfix">
-        <nav>
-          <ul class="nav nav-pills pull-right">
-            <li role="presentation" class="active"><a href="#">Home</a></li>
-            <li role="presentation"><a href="#">About</a></li>
-            <li role="presentation"><a href="#">Contact</a></li>
-          </ul>
-        </nav>
-        <h3 class="text-muted">Take Charge</h3>
+      <div class="jumbotron" style="margin-top:-20px;background: #fff url('/tc-img/banner1.jpeg') center;height:90vh;background-size:cover;">
+      <div style="color:#fff;text-align:left;padding:10px;padding-left:30px;padding-bottom:10vh;margin-top:60vh;width:100%; background-color:#000;">
+      <h1>TakeCharge</h1>
+      <p>Make your solar system work for you.</p>
       </div>
+      </div>
+      <div class="container">
       <div class="jumbotron">
         <div class="row">
         <div class="col-lg-6">
         <h2> Welcome Joe. </h2>
-        <div style="background-color:#000;"><span style="color:"""+color+""";font-size:69px;"><b>"""+str(rating)+"""</b></span> <span style="font-size:20px;color:#fff">score</span><br/></div>
-        <div style="border-bottom:#000 1px solid;"><span style="font-size:16px;"><span style="color:#2C75FF;">generation<span style="font-size:31px;">19</span>
-        </span><span style="color:#FBAA1D;">
-        <span style="font-size:40px;"><b>24</b></span> consumption
+        <div class="circle-black col-lg-offset-2"><span style="color:"""+color+""";"><b>"""+str(rating)+"""</b></span><br/><p class="lead" style="margin-top:-60px;font-size:20px;color:#fff">ChargeScore</p></div>
+        <div style="border-bottom:#000 1px solid;"><span style="font-size:16px;"><span style="color:#2C75FF;">generation<span style="font-size:40px;">8</span>
+        </span>vs<span style="color:#FBAA1D;">
+        <span style="font-size:32px;"><b>7.5</b></span> consumption
         </span>
         </span>
         </div>
-        <button type="button" class="btn btn-primary" style="margin-top:10%;text-size:15px;">What do these <br/>numbers mean?</button>
         </div>
         <div class="sidemain col-lg-offset-1 col-lg-5">
         <ul class="nav nav-pills nav-stacked">
@@ -86,7 +87,7 @@ def homePage():
           <li role="presentation"><a href="#"><span class="glyphicon glyphicon-knight"></span> Compete</a></li>
           <li role="presentation"><a href="#"><span class="glyphicon glyphicon-education"></span> Training</a></li>
           <li>
-          <a href="#" class="thumbnail">
+          <a href="?about=true" class="thumbnail">
             <img src="/tc-img/house.png" style="width:171px;height:180px;" alt="...">
           </a>
           </li>
@@ -122,7 +123,251 @@ def aboutPage():
     print "</body></html>"
 
 def leaderboardPage():
-    print "</body></html>"
+    print '''<body>
+    <div class="container">
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="?home=true">Take Charge</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#">Dashboard</a></li>
+            <li><a href="#">Settings</a></li>
+            <li><a href="#">Profile</a></li>
+            <li><a href="#">Help</a></li>
+          </ul>
+          <form class="navbar-form navbar-right">
+            <input type="text" class="form-control" placeholder="Search...">
+          </form>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-7 col-sm-offset-3 col-md-8 col-md-offset-2 main">
+          <h1 class="page-header">Leaderboard</h1>
+
+          <div class="row placeholders">
+          <p style="text-align:left;" class="text-muted">Filters:</p>
+            <div class="col-xs-6 col-sm-3 placeholder" style="border: #2c75ff 3px solid;">
+              <img src="/tc-img/globe.png" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
+              <h4>Overall</h4>
+              <span class="text-muted">You are 246/1233 worldwide</span>
+            </div>
+            <div class="col-xs-6 col-sm-3 placeholder">
+              <img src="/tc-img/nearyou.png" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
+              <h4>Near You</h4>
+              <span class="text-muted">You are 26/77 in Bondi Beach</span>
+            </div>
+            <div class="col-xs-6 col-sm-3 placeholder">
+              <img src="/tc-img/solarhouse.jpg" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
+              <h4>Similar Solar</h4>
+              <span class="text-muted">You are 101/652 of people with 3kW systems</span>
+            </div>
+            <div class="col-xs-6 col-sm-3 placeholder">
+              <img src="/tc-img/family.jpg" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
+              <h4>Similar Household</h4>
+              <span class="text-muted">You are 13/90 of families of 4</span>
+            </div>
+          </div>
+
+          <h2 class="sub-header">Global Leaderboard</h2>
+          <nav>
+            <ul class="pager">
+            <li><a href="#">Previous</a></li>
+            <li><a href="#">Next</a></li>
+            </ul>
+            </nav>
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Rank</th>
+                  <th>ChargeScore</th>
+                  <th>Energy Made</th>
+                  <th>Energy Used</th>
+                  <th>Live Weather</th>
+                  <th>Win Rate</th>
+                  <th>Challenge</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>242</td>
+                  <td class="chargeScore">2</td>
+                  <td>12</td>
+                  <td>-10</td>
+                  <td><img style="width:30px;" src="/tc-img/cloudy.png"></td>
+                  <td>46%</td>
+                  <td><a class="btn btn-success" href="?challenge=258"><span class="glyphicon glyphicon-knight"></span></a></td>
+                </tr>
+                <tr>
+                  <td>243</td>
+                  <td class="chargeScore">1.8</td>
+                  <td>8</td>
+                  <td>-6.2</td>
+                  <td><img style="width:30px;" src="/tc-img/rain.png"></td>
+                  <td>33%</td>
+                  <td><a class="btn btn-success" href="?challenge=258"><span class="glyphicon glyphicon-knight"></span></a></td>
+                </tr>
+                <tr>
+                  <td>244</td>
+                  <td class="chargeScore">1.7<span style="color:green;" class="glyphicon glyphicon-menu-up"></span></td>
+                  <td>11.4</td>
+                  <td>-9.7</td>
+                  <td><img style="width:30px;" src="/tc-img/sunny.png"></td>
+                  <td>62%</td>
+                  <td><a class="btn btn-success" href="?challenge=258"><span class="glyphicon glyphicon-knight"></span></a></td>
+                </tr>
+                <tr>
+                  <td>245</td>
+                  <td class="chargeScore">1.1<span style="color:green;" class="glyphicon glyphicon-menu-up"></span></td>
+                  <td>5.2</td>
+                  <td>-4.1</td>
+                  <td><img style="width:30px;" src="/tc-img/sunny.png"></td>
+                  <td>76%</td>
+                  <td><a class="btn btn-success" href="?challenge=258"><span class="glyphicon glyphicon-knight"></span></a></td>
+                </tr>
+                <tr style="background-color:#2c75ff;">
+                  <td>246</td>
+                  <td class="chargeScore">0.5<span style="color:green;" class="glyphicon glyphicon-menu-up"></span></td>
+                  <td>8</td>
+                  <td>-7.5</td>
+                  <td><img style="width:30px;" src="/tc-img/cloudy.png"></td>
+                  <td>55%</td>
+                  <td><a class="btn btn-success" disabled='disabled' href="?challenge=247"><span class="glyphicon glyphicon-knight"></span></a></td>
+                </tr>
+                <tr>
+                  <td>247</td>
+                  <td class="chargeScore">0.4</td>
+                  <td>18.2</td>
+                  <td>-17.8</td>
+                  <td><img style="width:30px;" src="/tc-img/cloudy.png"></td>
+                  <td>86%</td>
+                  <td><a class="btn btn-success" href="?challenge=247"><span class="glyphicon glyphicon-knight"></span></a></td>
+                </tr>
+                <tr>
+                  <td>248</td>
+                  <td class="chargeScore">0.1<span style="color:green;" class="glyphicon glyphicon-menu-up"></span></td>
+                  <td>4.6</td>
+                  <td>-4.5</td>
+                  <td><img style="width:30px;" src="/tc-img/cloudy.png"></td>
+                  <td>90%</td>
+                  <td><a class="btn btn-success" href="?challenge=258"><span class="glyphicon glyphicon-knight"></span></a></td>
+                </tr>
+                <tr>
+                  <td>249</td>
+                  <td class="chargeScore">0<span style="color:red;" class="glyphicon glyphicon-menu-down"></span></td>
+                  <td>12</td>
+                  <td>-12</td>
+                  <td><img style="width:30px;" src="/tc-img/sunny.png"></td>
+                  <td>69%</td>
+                  <td><a class="btn btn-success" href="?challenge=258"><span class="glyphicon glyphicon-knight"></span></a></td>
+                </tr>
+                <tr>
+                  <td>250</td>
+                  <td class="chargeScore">-1</td>
+                  <td>11</td>
+                  <td>-12</td>
+                  <td><img style="width:30px;" src="/tc-img/cloudy.png"></td>
+                  <td>14%</td>
+                  <td><a class="btn btn-success" href="?challenge=258"><span class="glyphicon glyphicon-knight"></span></a></td>
+                </tr>
+                <tr>
+                  <td>251</td>
+                  <td class="chargeScore">-2.8<span style="color:red;" class="glyphicon glyphicon-menu-down"></span></td>
+                  <td>5</td>
+                  <td>-7.8</td>
+                  <td><img style="width:30px;" src="/tc-img/rain.png"></td>
+                  <td>55%</td>
+                  <td><a class="btn btn-success" href="?challenge=258"><span class="glyphicon glyphicon-knight"></span></a></td>
+                </tr>
+                <tr>
+                  <td>252</td>
+                  <td class="chargeScore">-4<span style="color:red;" class="glyphicon glyphicon-menu-down"></span></td>
+                  <td>6.2</td>
+                  <td>-10.2</td>
+                  <td><img style="width:30px;" src="/tc-img/rain.png"></td>
+                  <td>66%</td>
+                  <td><a class="btn btn-success" href="?challenge=258"><span class="glyphicon glyphicon-knight"></span></a></td>
+                </tr>
+                <tr>
+                  <td>253</td>
+                  <td class="chargeScore">-6.6<span style="color:green;" class="glyphicon glyphicon-menu-up"></span></td>
+                  <td>5</td>
+                  <td>-11.6</td>
+                  <td><img style="width:30px;" src="/tc-img/rain.png"></td>
+                  <td>87%</td>
+                  <td><a class="btn btn-success" href="?challenge=258"><span class="glyphicon glyphicon-knight"></span></a></td>
+                </tr>
+                <tr>
+                  <td>254</td>
+                  <td class="chargeScore">-6.9<span style="color:red;" class="glyphicon glyphicon-menu-down"></span></td>
+                  <td>3</td>
+                  <td>-9.9</td>
+                  <td><img style="width:30px;" src="/tc-img/cloudy.png"></td>
+                  <td>46%</td>
+                  <td><a class="btn btn-success" href="?challenge=258"><span class="glyphicon glyphicon-knight"></span></a></td>
+                </tr>
+                <tr>
+                  <td>255</td>
+                  <td class="chargeScore">-7.4<span style="color:green;" class="glyphicon glyphicon-menu-up"></span></td>
+                  <td>18</td>
+                  <td>-25.4</td>
+                  <td><img style="width:30px;" src="/tc-img/rain.png"></td>
+                  <td>67%</td>
+                  <td><a class="btn btn-success" href="?challenge=258"><span class="glyphicon glyphicon-knight"></span></a></td>
+                </tr>
+                <tr>
+                  <td>256</td>
+                  <td class="chargeScore">-7.7</td>
+                  <td>10</td>
+                  <td>-17.7</td>
+                  <td><img style="width:30px;" src="/tc-img/sunny.png"></td>
+                  <td>55%</td>
+                  <td><a class="btn btn-success" href="?challenge=247"><span class="glyphicon glyphicon-knight"></span></a></td>
+                </tr>
+                <tr>
+                  <td>257</td>
+                  <td class="chargeScore">-8</td>
+                  <td>4</td>
+                  <td>-12</td>
+                  <td><img style="width:30px;" src="/tc-img/cloudy.png"></td>
+                  <td>57%</td>
+                  <td><a class="btn btn-success" href="?challenge=258"><span class="glyphicon glyphicon-knight"></span></a></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+    <script src="../../dist/js/bootstrap.min.js"></script>
+    <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
+    <script src="../../assets/js/vendor/holder.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+  </body>
+</html>'''
+
+def challengePage():
+    print """
+    </body></html>
+    """
 
 if "home" in parameters.keys():
     homePage()
@@ -130,6 +375,10 @@ elif "about" in parameters.keys():
     aboutPage()
 elif "leaderboard" in parameters.keys():
     leaderboardPage()
+elif "challenge" in parameters.keys():
+    challengePage()
+elif "profile" in parameters.keys():
+    profilePage()
 else:
     print """
           <form method="POST" class="form-signin" action="?home=true">
