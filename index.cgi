@@ -47,15 +47,15 @@ print """
         """
 
 def homePage():
-    rating = -18
+    rating = -4
     if (rating < -50):
-        buttonType = "danger"
+        color = "red"
     elif (rating > -50 and rating < -15):
-        buttonType = "warning"
+        color = "orange"
     elif (rating > -15 and rating < 0):
-        buttonType = "info"
+        color = "#5bc0de"
     else:
-        buttonType = "success"
+        color = "green"
     print """
       <div class="header clearfix">
         <nav>
@@ -69,16 +69,20 @@ def homePage():
       </div>
       <div class="jumbotron">
         <div class="row">
-        <div class="col-lg-6" style="text-align:right;">
-        <span style="font-size:20px;">Consumption: </span><div style="display:inline-block" class="circle-red">40</div>
-        <div style="margin-top:10px;"></div>
-        <span style="font-size:20px;">Generation: </span><div style="display:inline-block" class="circle-green">30</div>
-        <div style="margin-top:30px;"></div>
-        <p>Score: <a class="btn btn-lg btn-"""+buttonType+"""" href="#" role="button">"""+str(rating)+"""</a></p>
+        <div class="col-lg-6">
+        <h2> Welcome Joe. </h2>
+        <div style="background-color:#000;"><span style="color:"""+color+""";font-size:69px;"><b>"""+str(rating)+"""</b></span> <span style="font-size:20px;color:#fff">score</span><br/></div>
+        <div style="border-bottom:#000 1px solid;"><span style="font-size:16px;"><span style="color:#2C75FF;">generation<span style="font-size:31px;">19</span>
+        </span><span style="color:#FBAA1D;">
+        <span style="font-size:40px;"><b>24</b></span> consumption
+        </span>
+        </span>
+        </div>
+        <button type="button" class="btn btn-primary" style="margin-top:10%;text-size:15px;">What do these <br/>numbers mean?</button>
         </div>
         <div class="sidemain col-lg-offset-1 col-lg-5">
         <ul class="nav nav-pills nav-stacked">
-          <li role="presentation"><a href="#"><span class="glyphicon glyphicon-th-list"></span> Leaderboard</a></li>
+          <li role="presentation"><a href="?leaderboard=true"><span class="glyphicon glyphicon-th-list"></span> Leaderboard</a></li>
           <li role="presentation"><a href="#"><span class="glyphicon glyphicon-knight"></span> Compete</a></li>
           <li role="presentation"><a href="#"><span class="glyphicon glyphicon-education"></span> Training</a></li>
           <li>
@@ -90,29 +94,15 @@ def homePage():
         </div>
         </div>
       </div>
+
+      <div class="row">
+          <div class="col-lg-6">
+          <div class="thumbnail"><img src="/tc-img/left_panel.png" alt="..."></div>
+          </div>
+          <div class="col-lg-6">
+          <a href="?about=true" class="thumbnail"><img src="/tc-img/right_panel.png" alt="..."></a>
+          </div>
       </div>
-      <div class="row marketing">
-        <div class="col-lg-6">
-          <h4>Subheading</h4>
-          <p>Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.</p>
-
-          <h4>Subheading</h4>
-          <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit amet fermentum.</p>
-
-          <h4>Subheading</h4>
-          <p>Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
-        </div>
-
-        <div class="col-lg-6">
-          <h4>Subheading</h4>
-          <p>Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.</p>
-
-          <h4>Subheading</h4>
-          <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit amet fermentum.</p>
-
-          <h4>Subheading</h4>
-          <p>Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
-        </div>
       </div>
 
       <footer class="footer">
@@ -128,14 +118,24 @@ def homePage():
     </html>
     """
 
+def aboutPage():
+    print "</body></html>"
+
+def leaderboardPage():
+    print "</body></html>"
+
 if "home" in parameters.keys():
     homePage()
+elif "about" in parameters.keys():
+    aboutPage()
+elif "leaderboard" in parameters.keys():
+    leaderboardPage()
 else:
     print """
           <form method="POST" class="form-signin" action="?home=true">
             <h2 class="form-signin-heading">Please sign in</h2>
-            <label for="inputEmail" class="sr-only">Email address</label>
-            <input type="text" id="inputEmail" name="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+            <label for="inputEmail" class="sr-only">Username</label>
+            <input type="text" id="inputEmail" name="inputEmail" class="form-control" placeholder="Username" required autofocus>
             <label for="inputPass" class="sr-only">Password</label>
             <input type="password" id="inputPass" name="inputPass" class="form-control" placeholder="Password" required>
             <div class="checkbox">
