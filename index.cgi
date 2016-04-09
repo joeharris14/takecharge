@@ -87,7 +87,7 @@ def homePage():
           <li role="presentation"><a href="#"><span class="glyphicon glyphicon-knight"></span> Compete <span style="background-color:red;" class="badge">4</span></a></li>
           <li role="presentation"><a href="#"><span class="glyphicon glyphicon-education"></span> Training</a></li>
           <li>
-          <a href="?about=true" class="thumbnail">
+          <a href="?profile=true" class="thumbnail">
             <img src="/tc-img/house.png" style="width:171px;height:180px;" alt="...">
           </a>
           </li>
@@ -395,7 +395,7 @@ def challengePage():
             <div class="row">
             <div class="main"><h2><img class="center-block" src="/tc-img/ChallengePage.png" style="height:70vh;"></h2></div>
             </div>
-        <form class="form-inline row">
+        <form class="form-inline row" method="POST" action="?pending=true">
         <div class="col-lg-8">
         <h2 style="text-align:center;">Challenge Byron12:
         <select class="form-control">
@@ -419,7 +419,52 @@ def challengePage():
     </div>
     </body>
     </html>
+    '''
 
+
+
+def pendingPage():
+    print '''<body>
+    <div class="container">
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="?home=true">Take Charge</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="?home=true">Home</a></li>
+            <li><a href="#">Settings</a></li>
+            <li><a href="?profile=true">Profile</a></li>
+            <li><a href="?about=true">Help</a></li>
+          </ul>
+          <form class="navbar-form navbar-right">
+            <input type="text" class="form-control" placeholder="Search...">
+          </form>
+        </div>
+      </div>
+    </nav>
+        <div class="container" style="margin-top:10vh">
+            <div class="jumbotron row" style="background-color:#ccc">
+            <div class="col-lg-6">
+                <h2>Thanks for sending a Challenge!</h2>
+                <h3><i>Byron12</i> will be notified...</h3>
+                <h3><b>We'll let you know when they respond.</b></h3>
+            </div>
+            <div class="col-lg-6">
+            <img src="/tc-img/logo.png" style="height:15vh;margin-top:20px">
+            </div>
+            </div>
+            </div>
+        </div>
+    </body>
+    </html>
     '''
 
 if "home" in parameters.keys():
@@ -432,6 +477,8 @@ elif "challenge" in parameters.keys():
     challengePage()
 elif "profile" in parameters.keys():
     profilePage()
+elif "pending" in parameters.keys():
+    pendingPage()
 else:
     print """
           <form method="POST" class="form-signin" action="?home=true">
