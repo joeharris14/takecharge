@@ -72,14 +72,7 @@ def homePage():
       <div class="jumbotron">
         <div class="row">
         <div class="col-lg-6">
-        <h2> Welcome Joe. </h2>
-        <div class="circle-black col-lg-offset-2"><span style="color:"""+color+""";"><b>"""+str(rating)+"""</b></span><br/><p class="lead" style="margin-top:-60px;font-size:20px;color:#fff">ChargeScore</p></div>
-        <div style="border-bottom:#000 1px solid;"><span style="font-size:16px;"><span style="color:#2C75FF;">generation<span style="font-size:40px;">8</span>
-        </span>vs<span style="color:#FBAA1D;">
-        <span style="font-size:32px;"><b>7.5</b></span> consumption
-        </span>
-        </span>
-        </div>
+        <img src="/tc-img/HomeScreenImage.png" style="height:300px;margin-left:-10px;margin-top:12px;">
         </div>
         <div class="sidemain col-lg-offset-1 col-lg-5">
         <ul class="nav nav-pills nav-stacked">
@@ -107,7 +100,7 @@ def homePage():
       </div>
 
       <footer class="footer">
-        <p>&copy; 2015 Company, Inc.</p>
+        <p class="container"> &copy; 2016 TakeCharge, Inc.</p>
       </footer>
 
     </div> <!-- /container -->
@@ -447,7 +440,7 @@ def profilePage():
         </div>
       </div>
     </nav>
-    <h2><img class="center-block" src="/tc-img/ProfilePage.jpg" style="width:60%"></h2>
+    <h2><img class="center-block" src="/tc-img/ProfilePage.png" style="width:60%"></h2>
     </body>
     </html>
     '''
